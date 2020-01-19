@@ -1,0 +1,38 @@
+﻿@model WorkDanil.Electropech.Library
+@{
+    ViewData["Title"] = "Результаты расчета";
+}
+    <div class="text-center">
+        <h1 class="display-3"><b>Результат расчета</b></h1>
+        <form action="/Home/GrafikResult">
+            <table bgcolor="#FFF0FFFF" border="0" align="center">
+                <tr>
+                    <td>Требуемая полезная мощность в первом периоде нагрева</td>
+                    <td bgcolor="#FFA9A9A9">@Model.Npol </td>
+                    <td bgcolor="#FFFF8C00"><h3>кВт</h3></td>
+                </tr>
+                <tr>
+                    <td>Средняя полезная тепловая мощность во втором периоде</td>
+                    <td bgcolor="#FFA9A9A9">@Model.NpolII_cr </td>
+                    <td bgcolor="#FFFF8C00"><h3>кВт</h3></td>
+                </tr>
+                <tr>
+                    <td>Средняя полезная тепловая мощность за весь нагрев</td>
+                    <td bgcolor="#FFA9A9A9">@Model.N_all_pol_cr </td>
+                    <td bgcolor="#FFFF8C00"><h3>кВт</h3></td>
+                </tr>
+                <tr>
+                    <td>Затраченная мощность </td>
+                    <td bgcolor="#FFA9A9A9">@Model.Nzatr </td>
+                    <td bgcolor="#FFFF8C00"><h3>кВт</h3></td>
+                </tr>
+                <tr>
+                    <td>Удельный расход электрэнергии Вэ</td>
+                    <td bgcolor="#FFA9A9A9">@Model.Bel </td>
+                    <td bgcolor="#FFFF8C00"><h3>кВт/ч</h3></td>
+
+                </tr>
+            </table>
+
+        </form>
+    </div>
