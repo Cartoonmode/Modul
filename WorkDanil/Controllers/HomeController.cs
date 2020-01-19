@@ -36,6 +36,7 @@ namespace WorkDanil.Controllers
         public IActionResult Result(Electropech.Library data)
         {
             data.Calculate();
+            data.Graf();
             return View(data);
         }
 

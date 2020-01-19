@@ -7,6 +7,9 @@ namespace WorkDanil.Electropech
 {
     public class Library
     {
+        public List<double> Npols = new List<double>();
+        public List<double> tefs = new List<double>();
+
         #region Входные парамаетры
         /// <summary>
         /// Начальная температура°C
@@ -241,6 +244,35 @@ namespace WorkDanil.Electropech
             N_all_pol_cr = Math.Round(((Npol * T1 + NpolII_cr * T2) / (T1 + T2)),0);
             Nzatr = Math.Round((N_all_pol_cr / ny),0);
             Bel = Math.Round((Nzatr / Ppeh * 1000.0),0);
+        }
+
+        public void Graf()
+        {
+            double buf_tef = tef;
+            for (int i = 0; i < 100; i++)
+            {
+                tef += 1;
+                Calculate();
+                tefs.Add(tef);
+                Npols.Add(Npol);
+            }
+
+            tef = buf_tef;
+            Calculate();
+        }
+
+        int x = 0;
+        public double NpolN()
+        {
+            x++;
+            return Npols[x-1];
+        }
+
+        int y = 0;
+        public double TefN()
+        {
+            y++;
+            return tefs[y - 1];
         }
 
         public Models.Result Rachet()

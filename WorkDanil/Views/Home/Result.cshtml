@@ -2,6 +2,65 @@
 @{
     ViewData["Title"] = "Результаты расчета";
 }
+
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart', 'line'] });
+        google.charts.setOnLoadCallback(drawCurveTypes);
+
+        function drawCurveTypes() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Tемпература');
+            data.addColumn('number', 'y');
+
+      
+
+            data.addRows([
+                [@Model.tefs[0], @Model.Npols[0]],
+                [@Model.tefs[1], @Model.Npols[1]],
+                [@Model.tefs[2], @Model.Npols[2]],
+                [@Model.tefs[3], @Model.Npols[3]],
+                [@Model.tefs[4], @Model.Npols[4]],
+                [@Model.tefs[5], @Model.Npols[5]],
+                [@Model.tefs[6], @Model.Npols[6]],
+                [@Model.tefs[7], @Model.Npols[7]],
+                [@Model.tefs[8], @Model.Npols[8]],
+                [@Model.tefs[9], @Model.Npols[9]],
+                [@Model.tefs[10], @Model.Npols[10]],
+                [@Model.tefs[11], @Model.Npols[11]],
+                [@Model.tefs[12], @Model.Npols[12]],
+                [@Model.tefs[13], @Model.Npols[13]],
+                [@Model.tefs[14], @Model.Npols[14]],
+                [@Model.tefs[15], @Model.Npols[15]],
+                [@Model.tefs[16], @Model.Npols[16]],
+                [@Model.tefs[17], @Model.Npols[17]],
+                [@Model.tefs[18], @Model.Npols[18]],
+                [@Model.tefs[19], @Model.Npols[19]],
+                [@Model.tefs[20], @Model.Npols[20]],
+                [@Model.tefs[21], @Model.Npols[21]],
+                [@Model.tefs[21], @Model.Npols[21]]
+            ]);
+
+            var options = {
+                hAxis: {
+                    title: 'Эффективная температура печи'
+                },
+                vAxis: {
+                    title: 'Требуемая полезная мощность в 1 периоде'
+                },
+                series: {
+                    1: { curveType: 'function' }
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
     <div class="text-center">
         <h1 class="display-3"><b>Результат расчета</b></h1>
         <form action="/Home/GrafikResult">
@@ -36,3 +95,6 @@
 
         </form>
     </div>
+    <div id="chart_div" style="width: 900px; height: 500px"></div>
+</body>
+</html>
